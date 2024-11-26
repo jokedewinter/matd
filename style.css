@@ -43,7 +43,7 @@ button, fieldset, input, textarea, select, fieldset {
 
 @font-face {
 	font-family: 'ProofThis'; /*font-style: normal; font-weight: 400;*/
-	src: local(''), url('proofthis.woff') format('woff');
+	src: url('proofthis.woff') format('woff');
 }
 
 
