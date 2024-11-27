@@ -49,7 +49,7 @@ ul li { list-style: none; }
 ul a { border-bottom: none; }
 
 a { color: inherit; text-decoration: none; }
-.current { font-weight: bold; text-decoration: underline; }
+.current { font-weight: bold; border-bottom: 2px solid var(--col-text); }
 
 /**
  * ---------------------------------
