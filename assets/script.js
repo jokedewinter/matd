@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------
- * Choose size
+ * Change font size
  * ------------------------------------------------------------- */
 var selectSize = document.getElementsByClassName("selectSize");
 	
@@ -11,4 +11,41 @@ for ( let i = 0; i < selectSize.length; i++ ) {
         document.getElementsByClassName("sizeValue")[i].innerHTML = chosenSize + " px";
 	        
     }, false);
+}
+
+/* -------------------------------------------------------------
+ * Populate the text block from the buttons in the menu
+ * ------------------------------------------------------------- */
+
+// Read the JSON file
+var content = content;
+
+// Get the menu
+var menu = '';
+menu = document.getElementById("menu").getElementsByTagName("button");
+
+// Fill text block with adhesion on page load
+add_text(0);
+menu[0].classList.add('current');
+
+// Listen for button click of the menu
+for ( let i = 0; i < menu.length; i++ ) {
+
+    menu[i].addEventListener("click", function() {
+        // Remove the class 'current' if it exists
+		for (j = 0; j < menu.length; j++) {
+		    menu[j].classList.remove('current')
+		}		
+		this.classList.add('current');
+		add_text(i);
+	}, false);
+} 
+
+function add_text(i) {
+	var paragraph = document.getElementById("textbox");	
+	paragraph_text = new Array();
+	paragraph_text.push('<p class="string" contenteditable="true">');
+	paragraph_text.push(content[i]['value']);
+	paragraph_text.push('</p>');	
+	paragraph.innerHTML = paragraph_text.join('');	
 }
