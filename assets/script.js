@@ -1,4 +1,27 @@
 /* -------------------------------------------------------------
+ * Adjust starting font size depending on viewport width
+ * Does not update if you change viewport width manually
+ * ------------------------------------------------------------- */
+/*
+var fontSize = document.getElementsByClassName("sizeValue");
+var viewport_width = window.innerWidth;
+
+if ( viewport_width <= 720 ) {
+	for ( let i = 0; i < fontSize.length; i++ ) {
+        fontSize[i].innerHTML = "36 px"; 
+    }
+} else if ( viewport_width <= 1200) {
+	for ( let i = 0; i < fontSize.length; i++ ) {
+        fontSize[i].innerHTML = "72 px"; 
+    }
+} else {
+	for ( let i = 0; i < fontSize.length; i++ ) {
+        fontSize[i].innerHTML = "125 px"; 
+    }
+}
+
+
+/* -------------------------------------------------------------
  * Change font size
  * ------------------------------------------------------------- */
 var selectSize = document.getElementsByClassName("selectSize");
@@ -48,4 +71,9 @@ function add_text(i) {
 	paragraph_text.push(content[i]['value']);
 	paragraph_text.push('</p>');	
 	paragraph.innerHTML = paragraph_text.join('');	
+	
+	// Reset type size 
+    document.getElementsByClassName("string")[0].style.fontSize = "18px";
+    document.getElementsByClassName("sizeValue")[0].innerHTML = "18 px";
+    document.getElementsByClassName("selectSize")[0].value = "18";
 }
