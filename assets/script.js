@@ -1,27 +1,4 @@
 /* -------------------------------------------------------------
- * Adjust starting font size depending on viewport width
- * Does not update if you change viewport width manually
- * ------------------------------------------------------------- */
-/*
-var fontSize = document.getElementsByClassName("sizeValue");
-var viewport_width = window.innerWidth;
-
-if ( viewport_width <= 720 ) {
-	for ( let i = 0; i < fontSize.length; i++ ) {
-        fontSize[i].innerHTML = "36 px"; 
-    }
-} else if ( viewport_width <= 1200) {
-	for ( let i = 0; i < fontSize.length; i++ ) {
-        fontSize[i].innerHTML = "72 px"; 
-    }
-} else {
-	for ( let i = 0; i < fontSize.length; i++ ) {
-        fontSize[i].innerHTML = "125 px"; 
-    }
-}
-
-
-/* -------------------------------------------------------------
  * Change font size
  * ------------------------------------------------------------- */
 var selectSize = document.getElementsByClassName("selectSize");
@@ -37,6 +14,16 @@ for ( let i = 0; i < selectSize.length; i++ ) {
 }
 
 /* -------------------------------------------------------------
+ * Choose theme
+ * ------------------------------------------------------------- */
+
+var reverse = document.getElementById("reverse");
+var container = document.body;
+reverse.onclick = function() { 
+   container.classList.toggle("dark-mode");
+}
+
+/* -------------------------------------------------------------
  * Populate the text block from the buttons in the menu
  * ------------------------------------------------------------- */
 
@@ -45,7 +32,7 @@ var content = content;
 
 // Get the menu
 var menu = '';
-menu = document.getElementById("menu").getElementsByTagName("button");
+menu = document.getElementById("menu").getElementsByClassName("text_choice");
 
 // Fill text block with adhesion on page load
 add_text(0);
@@ -74,6 +61,6 @@ function add_text(i) {
 	
 	// Reset type size 
     document.getElementsByClassName("string")[0].style.fontSize = "18px";
-    document.getElementsByClassName("sizeValue")[0].innerHTML = "18 px";
-    document.getElementsByClassName("selectSize")[0].value = "18";
+    document.getElementsByClassName("size_value")[0].innerHTML = "18 px";
+    document.getElementsByClassName("size_select")[0].value = "18";
 }

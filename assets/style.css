@@ -1,5 +1,14 @@
 /**
  * ---------------------------------
+ * In browser font proofer
+ * 
+ * Author: Joke De Winter
+ * Author URI: https://www.jokedewinter.co.uk
+ * Version: 1.0
+ * ------------------------------------------------------------------------ */
+
+/**
+ * ---------------------------------
  * Reset
  * CSS Reset for minimalists
  * Source: http://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
@@ -24,7 +33,8 @@ button, fieldset, input, textarea, select, fieldset { background: none; border: 
     --col-text: rgb(66, 67, 69); 		
 	--col-text-reverse: #fbfbf9;
     --col-text-light: #A3A299;
-	--col-text-hover: #EFC759; 
+	--col-page-light: #ffffff; 
+	--col-page-dark: #212121; 
 } 
 
 /**
@@ -44,7 +54,7 @@ header > *, button { font-size: 16px; font-size: 1.6rem; }
 header ul { 	display: flex; justify-content: flex-end; }
 header ul li { margin-right: 1em; }
 
-h1 { text-transform: uppercase; letter-spacing: 1px; }
+h1 { text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1em; }
 ul { padding: 0; }
 ul li { list-style: none; }
 ul a { border-bottom: none; }
@@ -59,7 +69,20 @@ a { color: inherit; text-decoration: none; }
 
 .string { font-size: 18px; font-size: 1.8rem; }
 .choose_size { margin-right: auto; /* Aligns this to the left */ }
-.choose_size label { font-family: sans-serif; font-size: 16px; color: var(--col-text-light); }
+.choose_size label { font-family: sans-serif; font-size: 16px; font-size: 1.6rem; color: var(--col-text-light); }
+
+/**
+ * ------------------------------------------------------------- 
+ * Theme settings
+ * ------------------------------------------------------------- */
+ 
+#reverse::before { content: "\262F"; font-size: 24px; font-size: 2.4rem; }
+.dark-mode #reverse::before { color: var(--col-text-reverse); }
+.dark-mode { background-color: var(--col-page-dark); }
+
+.dark-mode,
+.dark-mode button { color: var(--col-text-reverse); }
+.dark-mode .current { border-bottom-color: var(--col-text-reverse); }
 
 /**
  * ---------------------------------
