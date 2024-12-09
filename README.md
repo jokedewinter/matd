@@ -10,5 +10,6 @@ Work in progress.
 ## Features
 
 - Change font size.
-- Choose between normal text or "adhesion" text.
+- Choose between normal Latin text, random Arabic words or "adhesion"/"videospan" text.
 - Select the text block and paste your own text.
+- Dark mode with with text on dark background.
