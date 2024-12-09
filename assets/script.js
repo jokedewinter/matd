@@ -54,7 +54,10 @@ for ( let i = 0; i < menu.length; i++ ) {
 function add_text(i) {
 	var paragraph = document.getElementById("textbox");	
 	paragraph_text = new Array();
-	paragraph_text.push('<p class="string" contenteditable="true">');
+	
+	var language = '';
+	if ( 'arabic' == content[i]['text'] ) { language = "style='direction:rtl;'"; }
+	paragraph_text.push('<p class="string" contenteditable="true" ' + language + ' >');
 	paragraph_text.push(content[i]['value']);
 	paragraph_text.push('</p>');	
 	paragraph.innerHTML = paragraph_text.join('');	
