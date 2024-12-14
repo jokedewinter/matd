@@ -9,9 +9,11 @@
 
 <body>
 	
-    <div id="dropzone" class="dropzone">
-		<p>Drag and drop a font file here (woff, woff2, ttf, otf).</p>
-    </div>
+	<form id="dropzone" class="dropzone">
+		<p>Drag and drop a font file here (otf, ttf, woff, woff2).</p>
+		<label class="button" for="fileElem">Choose a file</label>
+		<input type="file" id="fileElem" accept=".otf, .ttf, .woff, .woff2" onchange="handlefiles(this.files)">
+	</form>
     
     <div class="text">
 		<p>Sample text with custom font</p>
