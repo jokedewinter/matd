@@ -9,10 +9,20 @@
 <body>
 	<header>
 	    <h1>Proof</h1>
+	
+		<form id="dropzone" class="dropzone">
+			<fieldset>
+				<p>Drag and drop a font file here (otf, ttf, woff, woff2).</p>
+				<label class="button" for="fileElem">Choose a file</label>
+				<input type="file" id="fileElem" accept=".otf, .ttf, .woff, .woff2" onchange="handlefiles(this.files)">
+				<p id="current"></p>
+			</fieldset>
+		</form>
+	
 		<ul id="menu">
 			<li><button id="reverse"></button></li>			
 			<li class="choose_size">
-				<label for="fontsize">Size <span class="size_value">18 px</span>
+				<label for="fontsize"><span class="size_value">18 px</span>
 					<input id="fontsize" class="size_select" type="range" min="12" max="150" value="18"> 
 				</label>
 			</li>

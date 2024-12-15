@@ -1,4 +1,71 @@
 /* -------------------------------------------------------------
+ * Drag and drop file upload
+ * Also works with the button to select files from system
+ * (all with help from ChatGPT)
+ * ------------------------------------------------------------- */
+ 
+// Get the dropzone element
+const dropzone = document.getElementById("dropzone");
+
+// Add event listeners for drag, leave and drop
+dropzone.addEventListener("dragover", (event) => {
+    event.preventDefault(); 
+    dropzone.classList.add('highlight'); 
+});
+
+dropzone.addEventListener("dragleave", () => {
+    dropzone.classList.remove('highlight'); 
+});
+
+dropzone.addEventListener("drop", (event) => {
+    event.preventDefault(); 
+    dropzone.classList.remove('highlight'); 
+    dropzone.classList.add('dropped'); 
+
+	// Get the list of dropped files
+    const files = event.dataTransfer.files; 
+    if (files.length === 0) {
+        alert("No files dropped.");
+        return;
+    }
+	
+	handlefiles(files);
+});
+
+function handlefiles(files) {
+	
+    // Assume the first file is the font file
+	const fontFile = files[0]; 
+    const fileReader = new FileReader();	
+
+// Read the font file as a data URL
+    fileReader.onload = function(e) {
+        const fontDataUrl = e.target.result;
+
+        // Create a new style element to define the @font-face rule
+        const styleElement = document.createElement("style");
+        styleElement.innerHTML = `
+            @font-face {
+                font-family: "ProofingFont";
+                src: url("${fontDataUrl}") format("woff2");
+            }
+        `;
+        // Append the style to the document head
+		document.head.appendChild(styleElement); 
+    };
+	
+	// Add filename of dropped file in the dropzone
+	console.log(fontFile);
+	var current = document.getElementById("current");
+	current.innerHTML = fontFile.name;
+
+    // Read the font file as a Data URL (works for fonts like .woff, .woff2, .ttf, .otf)
+    fileReader.readAsDataURL(fontFile);
+
+}
+
+
+/* -------------------------------------------------------------
  * Change font size
  * ------------------------------------------------------------- */
 var selectSize = document.getElementsByClassName("size_select");

@@ -26,15 +26,16 @@ button, fieldset, input, textarea, select, fieldset { background: none; border: 
  * Custom properties
  * --------------------------------- */
  
-@font-face { font-family: 'ProofThis'; src: url('../proofthis.woff') format('woff'); }
-
 :root {
-	--font: 'ProofThis';
+	--font: sans-serif;
     --col-text: rgb(66, 67, 69); 		
 	--col-text-reverse: #fbfbf9;
     --col-text-light: #A3A299;
 	--col-page-light: #ffffff; 
 	--col-page-dark: #212121; 
+	--col-dropzone: #f8f7f0;
+	--col-button: #ddd;
+	--col-button-hover: #bbb;
 } 
 
 /**
@@ -44,17 +45,42 @@ button, fieldset, input, textarea, select, fieldset { background: none; border: 
 
 html { font-size: 62.5%; }
 
-body { clear: both; font-family: var(--font); font-size: 18px; font-size: 1.8rem; font-weight: normal; line-height: 1.5; color: var(--col-text); width: 90%; max-width: 80em; margin: 2em auto; overflow-x: hidden; }
+body { clear: both; font-family: var(--font); font-size: 18px; font-size: 1.8rem; font-weight: normal; line-height: 1.5; color: var(--col-text); margin: 2em auto; overflow-x: hidden; }
+
+body, 
+fieldset { width: 90%; max-width: 80em; }
 
 body > * { position: relative; }
 
-header { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid var(--col-text-light); font-family: sans-serif; }
+header { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid var(--col-text-light); }
 header > *, button { font-size: 16px; font-size: 1.6rem; }
 
-header ul { 	display: flex; justify-content: flex-end; }
 header ul li { margin-right: 1em; }
 
+@media screen and ( max-width: 47.99em ) {
+	
+	header ul li:nth-of-type(-n+2) {
+		display: inline;
+	}
+	
+	
+	header ul li:nth-of-type(3) {
+		display: block;
+		padding-top: 1em;
+	}
+}
+
+@media screen and ( min-width: 48em ) {
+	header ul { 	display: flex; justify-content: flex-end; }
+}
+
+/**
+ * ---------------------------------
+ * Typography
+ * --------------------------------- */
+
 h1 { text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1em; }
+p { padding-bottom: 0.5em; }
 ul { padding: 0; }
 ul li { list-style: none; }
 ul a { border-bottom: none; }
@@ -67,7 +93,7 @@ a { color: inherit; text-decoration: none; }
  * Typetester
  * --------------------------------- */
 
-.string { font-size: 18px; font-size: 1.8rem; }
+.string { font-family: 'ProofingFont', monospace; font-size: 18px; font-size: 1.8rem; }
 .choose_size { margin-right: auto; /* Aligns this to the left */ }
 .choose_size label { font-family: sans-serif; font-size: 16px; font-size: 1.6rem; color: var(--col-text-light); }
 
@@ -83,6 +109,24 @@ a { color: inherit; text-decoration: none; }
 .dark-mode,
 .dark-mode button { color: var(--col-text-reverse); }
 .dark-mode .current { border-bottom-color: var(--col-text-reverse); }
+
+
+/**
+ * ------------------------------------------------------------- 
+ * File upload
+ * ------------------------------------------------------------- */
+ 
+.dropzone { 	width: 100vw; position: relative; left: 50%; right: 50%; margin: 0 -50vw 2em -50vw; padding: 1em 0; background-color: var(--col-dropzone); }
+
+fieldset { margin: 0 auto; }
+.dropzone.highlight { background-color: #f0f0f0; }
+/*.dropzone.dropped { 	background-color: #333; color: #fff; }*/
+
+.button { display: inline-block; padding: 0.3em 0.5em; background-color: var(--col-button); cursor: pointer; border-radius: 5px; }
+.button:hover { background-color: var(--col-button-hover); }
+
+#fileElem { display: none; }
+#current { display: inline-block; float: right; color: green; font-weight: bold; }
 
 /**
  * ---------------------------------
