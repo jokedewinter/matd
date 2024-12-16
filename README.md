@@ -2,6 +2,8 @@
 
 Work in progress.
 
+Either download the repository to use offline, or use the online version: https://jokedewinter.github.io/matd/
+
 ## Instructions
 
 1. Select a font file via the file browser or drag and drop a font in the dropzone.
