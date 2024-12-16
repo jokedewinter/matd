@@ -19,18 +19,22 @@
 			</fieldset>
 		</form>
 	
-		<ul id="menu">
-			<li><button id="reverse"></button></li>			
-			<li class="choose_size">
-				<label for="fontsize"><span class="size_value">18 px</span>
-					<input id="fontsize" class="size_select" type="range" min="12" max="150" value="18"> 
-				</label>
-			</li>
-			<li><button class="text_choice" name="adhesion"><code>adhesion</code></button></li>
-			<li><button class="text_choice" name="videospan"><code>videospan</code></button></li>
-			<li><button class="text_choice" name="latin">Latin</button></li>
-			<li><button class="text_choice" name="arabic">Arabic</button></li>
-		</ul>
+		<div>
+			<ul class="menu__style">
+				<li><button id="reverse"></button></li>			
+				<li class="choose_size">
+					<label for="fontsize"><span class="size_value">18 px</span>
+						<input id="fontsize" class="size_select" type="range" min="12" max="150" value="18"> 
+					</label>
+				</li>
+			</ul>
+			<ul id="menu" class="menu__text">
+				<li><button class="text_choice" name="adhesion"><code>adhesion</code></button></li>
+				<li><button class="text_choice" name="videospan"><code>videospan</code></button></li>
+				<li><button class="text_choice" name="latin">Latin</button></li>
+				<li><button class="text_choice" name="arabic">Arabic</button></li>
+			</ul>
+		</div>
 	</header>
 	
 	<div id="textbox">

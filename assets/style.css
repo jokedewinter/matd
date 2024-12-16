@@ -48,30 +48,24 @@ html { font-size: 62.5%; }
 body { clear: both; font-family: var(--font); font-size: 18px; font-size: 1.8rem; font-weight: normal; line-height: 1.5; color: var(--col-text); margin: 2em auto; overflow-x: hidden; }
 
 body, 
-fieldset { width: 90%; max-width: 80em; }
+fieldset { width: 90%; }
 
 body > * { position: relative; }
 
 header { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid var(--col-text-light); }
 header > *, button { font-size: 16px; font-size: 1.6rem; }
 
+header ul { 	display: flex; }
 header ul li { margin-right: 1em; }
+.menu__style { justify-content: flex-start; }
 
 @media screen and ( max-width: 47.99em ) {
-	
-	header ul li:nth-of-type(-n+2) {
-		display: inline;
-	}
-	
-	
-	header ul li:nth-of-type(3) {
-		display: block;
-		padding-top: 1em;
-	}
+	.menu__style { margin-bottom: 1em; }
 }
 
 @media screen and ( min-width: 48em ) {
-	header ul { 	display: flex; justify-content: flex-end; }
+	header div { display: flex; justify-content: space-between; }
+	.menu__text { justify-content: flex-end; }
 }
 
 /**
@@ -126,7 +120,7 @@ fieldset { margin: 0 auto; }
 .button:hover { background-color: var(--col-button-hover); }
 
 #fileElem { display: none; }
-#current { display: inline-block; float: right; color: green; font-weight: bold; }
+#current { display: inline-block; float: right; color: peru; font-weight: bold; }
 
 /**
  * ---------------------------------
