@@ -1,0 +1,142 @@
+/**
+ * ---------------------------------
+ * In browser font proofer
+ * 
+ * Author: Joke De Winter
+ * Author URI: https://www.jokedewinter.co.uk
+ * Version: 1.0
+ * ------------------------------------------------------------------------ */
+
+/**
+ * ---------------------------------
+ * Reset
+ * CSS Reset for minimalists
+ * Source: http://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
+ * ------------------------------------------------------------------------ */
+
+*, *:before, *:after { box-sizing: border-box;  }
+* { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; }
+button, fieldset, input, textarea, select, fieldset { background: none; border: none; border-radius: 0px; outline: 0; }
+article, aside, footer, header, hgroup, main, nav, section { display: block; }
+nav ul, nav ol { @include no-bullets(); }
+button, fieldset, input, textarea, select, fieldset { background: none; border: none; border-radius: 0; outline: 0; -webkit-appearance: none; font-family: sans-serif; }
+
+/**
+ * --------------------------------- 
+ * Custom properties
+ * --------------------------------- */
+ 
+:root {
+	--font: sans-serif;
+    --col-text: rgb(66, 67, 69); 		
+	--col-text-reverse: #fbfbf9;
+    --col-text-light: #A3A299;
+	--col-page-light: #ffffff; 
+	--col-page-dark: #212121; 
+	--col-dropzone: #f8f7f0;
+	--col-border: #ccc;
+	--col-button: #ddd;
+	--col-button-hover: #bbb;
+} 
+
+/**
+ * ---------------------------------
+ * Site settings
+ * --------------------------------- */
+
+html { font-size: 62.5%; }
+
+body { clear: both; font-family: var(--font); font-size: 18px; font-size: 1.8rem; font-weight: normal; line-height: 1.5; color: var(--col-text); margin: 2em auto; overflow-x: hidden; }
+
+body, 
+fieldset { width: 90%; }
+
+body > * { position: relative; }
+
+/**
+ * ---------------------------------
+ * Typography
+ * --------------------------------- */
+
+h1 { text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5em; font-size: 21px; font-size: 2.1rem; }
+h2 { font-size: 16px; font-size: 1.6rem; color: var(--col-text-light); }
+p { padding-bottom: 0.5em; }
+ul { padding: 0; }
+ul li { list-style: none; }
+ul a { border-bottom: none; }
+
+/**
+ * ---------------------------------
+ * Links
+ * --------------------------------- */
+
+a { color: inherit; text-decoration: none; }
+.current { font-weight: bold; border-bottom: 2px solid var(--col-text); }
+
+
+.button { display: inline-block; padding: 0.3em 0.5em; background-color: var(--col-button); cursor: pointer; border-radius: 5px; }
+.button:hover { background-color: var(--col-button-hover); }
+
+/**
+ * ---------------------------------
+ * Header
+ * --------------------------------- */
+ 
+header { }
+header, header ul { display: flex; justify-content: space-between; }
+header ul li { margin-left: 1em; }
+
+/**
+ * ---------------------------------
+ * Proofing menu
+ * --------------------------------- */
+
+nav #menu { display: flex; flex-wrap: wrap; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid var(--col-text-light); }
+
+nav #menu li button { font-size: 18px; font-size: 1.8rem; margin-right: 1.5em; margin-bottom: 1em; }
+nav #menu li button:hover {
+	color: var(--col-button-hover); 
+}
+
+/**
+ * ---------------------------------
+ * Typetester
+ * --------------------------------- */
+
+#proof p { font-family: 'ProofingFont', monospace; font-size: 18px; font-size: 1.8rem; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed var(--col-border); }
+
+.string { white-space: nowrap; width: 100vw; }
+.text { width: 40%; margin-right: 5em; display: inline-block; vertical-align: text-top; max-width: 50ch; }
+
+/**
+ * ------------------------------------------------------------- 
+ * Theme settings
+ * ------------------------------------------------------------- */
+ 
+#reverse::before { content: "\262F"; font-size: 24px; font-size: 2.4rem; }
+#reverse { background-color: transparent; padding: 0; }
+
+.dark-mode #reverse::before { color: var(--col-text-reverse); }
+.dark-mode { background-color: var(--col-page-dark); }
+
+.dark-mode,
+.dark-mode button { color: var(--col-text-reverse); }
+.dark-mode .current { border-bottom-color: var(--col-text-reverse); }
+
+.dark-mode .dropzone, .dark-mode button { color: var(--col-text); }
+
+/**
+ * ------------------------------------------------------------- 
+ * File upload
+ * ------------------------------------------------------------- */
+ 
+.dropzone { 	width: 100vw; position: relative; left: 50%; right: 50%; margin: 0 -50vw 2em -50vw; padding: 1em 0; background-color: var(--col-dropzone); }
+
+fieldset { margin: 0 auto; }
+.dropzone.highlight { background-color: #f0f0f0; }
+/*.dropzone.dropped { 	background-color: #333; color: #fff; }*/
+
+
+#fileElem { display: none; }
+#current { display: inline-block; float: right; color: peru; font-weight: bold; }
+
