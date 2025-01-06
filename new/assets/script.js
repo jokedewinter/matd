@@ -87,8 +87,8 @@ var menu = '';
 menu = document.getElementById("menu").getElementsByClassName("text_choice");
 
 // Global variables
-const sizes_big = [96, 72, 48, 36, 24, 18];
-const sizes_small = [16, 14, 12, 10];
+const sizes_big = [144, 96, 72, 48, 36, 24];
+const sizes_small = [21, 18, 16, 14, 12, 10];
 
 
 // Fill text block with adhesion on page load
@@ -108,16 +108,15 @@ for ( let i = 0; i < menu.length; i++ ) {
 		empty_proof();
 		
 		switch ( content[i]['text'] ) {
-			case "adhesion": add_lines(i); break;
-			case "pangram": add_lines(i); break;
-			case "paragraph": add_text(i); break;
-			case "lowercase": add_text(i); break;
-			case "uppercase": add_text(i); break;
-			case "mixed": add_text(i); break;
-			case "layout": add_text(i); break;
-			case "glyphs": add_text(i); break;
-			case "diacritics": add_text(i); break;
-			case "kern": add_text(i); break;
+			case "adhesion" : add_content(i); break;
+			case "pangram"  : add_content(i); break;
+			case "lowercase": add_content(i); break;
+			case "uppercase": add_content(i); break;
+			case "paragraph": add_content(i); break;
+			case "layout"	: add_content(i); break;
+			case "glyphs"	: add_content(i); break;
+//			case "diacritics": add_text(i); break;
+//			case "kern": add_text(i); break;
 			default :
 				console.log('You broke it!');
 		}
@@ -131,48 +130,82 @@ function empty_proof() {
 	proof.innerHTML = proof_text.join('');
 }
 
-function add_lines(i) {
-	var proof = document.getElementById("proof");	
-	proof_text = new Array();
-	
+function add_lines(i, proof_text) {
 	// Text single lines
 	for ( let j = 0; j < sizes_big.length; j++ ) {
 	
-		proof_text.push('<h2>' + sizes_big[j] + 'px</h2>');
+		proof_text.push('<h4>' + sizes_big[j] + 'px</h4>');
 		proof_text.push('<p class="string" contenteditable="true" style="font-size: ' + sizes_big[j] + 'px;">');
 		proof_text.push(content[i]['short']);
 		proof_text.push('</p>');	
-
 	}
+	
+	return proof_text;
+}
 
+function add_blocks(i, proof_text) {
 	// Text blocks
 	for ( let j = 0; j < sizes_small.length; j++ ) {
 	
 		proof_text.push('<article class="text">');
-		proof_text.push('<h2>' + sizes_small[j] + 'px</h2>');
+		proof_text.push('<h4>' + sizes_small[j] + 'px</h4>');
 		proof_text.push('<p contenteditable="true" style="font-size: ' + sizes_small[j] + 'px;">');
 		proof_text.push(content[i]['long']);
 		proof_text.push('</p>');	
 		proof_text.push('</article>');
-
 	}
 	
-	proof.innerHTML = proof_text.join('');	
-	
+	return proof_text;
 }
 
-function add_text(i) {
+function add_layout(i, proof_text) {
+	// Layout blocks
+	proof_text.push('<article class="layout">');
+	proof_text.push('<h4>60px | 24px | 18px</h4>');
+	proof_text.push('<p contenteditable="true" style="font-size: 60px;">');
+	proof_text.push(content[i]['headline']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 24px;">');
+	proof_text.push(content[i]['intro']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 18px;">');
+	proof_text.push(content[i]['paragraphs']);
+	proof_text.push('</p>');	
+	proof_text.push('</article>');
 	
-	var paragraph = document.getElementById("textbox");	
-	paragraph_text = new Array();
-	
-	var language = '';
-	if ( 'arabic' == content[i]['text'] ) { language = "style='direction:rtl;'"; }
-	paragraph_text.push('<p class="string" contenteditable="true" ' + language + ' >');
-	paragraph_text.push(content[i]['value']);
-	paragraph_text.push('</p>');	
-	paragraph.innerHTML = paragraph_text.join('');	
-	
+	return proof_text;
 }
 
-			
+function add_glyphs(i, proof_text) {
+	// Layout blocks
+	proof_text.push('<article class="glyphs">');
+	proof_text.push('<h4>72px</h4>');
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['lowercase']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['uppercase']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['figures']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['punctuation']);
+	proof_text.push('</p>');	
+	proof_text.push('</article>');
+	
+	return proof_text;
+}
+
+function add_content(i) {
+	var proof = document.getElementById("proof");	
+	proof_text = new Array();
+	
+	if (( "adhesion" == content[i]['text'] ) || ( "pangram" == content[i]['text'] )) { add_lines(i, proof_text); }
+	if ( "layout" == content[i]['text'] ) { add_layout(i, proof_text); }
+	if ( "glyphs" == content[i]['text'] ) { add_glyphs(i, proof_text); }
+	else { add_blocks(i, proof_text); }
+	
+	proof.innerHTML = proof_text.join('');		
+}
+

@@ -59,7 +59,7 @@ body > * { position: relative; }
  * --------------------------------- */
 
 h1 { text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5em; font-size: 21px; font-size: 2.1rem; }
-h2 { font-size: 16px; font-size: 1.6rem; color: var(--col-text-light); }
+h4 { font-size: 16px; font-size: 1.6rem; color: var(--col-text-light); }
 p { padding-bottom: 0.5em; }
 ul { padding: 0; }
 ul li { list-style: none; }
@@ -105,8 +105,11 @@ nav #menu li button:hover {
 
 #proof p { font-family: 'ProofingFont', monospace; font-size: 18px; font-size: 1.8rem; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed var(--col-border); }
 
-.string { white-space: nowrap; width: 100vw; }
-.text { width: 40%; margin-right: 5em; display: inline-block; vertical-align: text-top; max-width: 50ch; }
+.string { white-space: nowrap; overflow-x: scroll; width: 100vw; }
+.text { width: 45%; margin-right: 5%; display: inline-block; vertical-align: text-top; max-width: 60ch; }
+.layout p {
+	white-space: pre;
+}
 
 /**
  * ------------------------------------------------------------- 
