@@ -29,10 +29,10 @@ var content = [
 	},
 	{
 		"text": "glyphs",
-		"uppercase": "A B C D E F G H I J K L M N O P Q R S ẞ T U V W X Y Z",
-		"lowercase": "a b c d e f g h i j k l m n o p q r s ß t u v w x y z",
+		"lowercase": "a b c d e f g h i j k l m n\no p q r s ß t u v w x y z",
+		"uppercase": "A B C D E F G H I J K L M N\nO P Q R S ẞ T U V W X Y Z",
 		"figures": "0 1 2 3 4 5 6 7 8 9 ",
-		"punctuation": "( { [ . , : ; ¡ ! ¿ ? * ] } ) & # $ € £ % @ &",
+		"punctuation": "( { [ . , : ; ¡ ! ¿ ? * ] } )\n# $ € £ % @ &",
 	},
 	{
 		"text": "diacritics",

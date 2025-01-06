@@ -93,7 +93,7 @@ header ul li { margin-left: 1em; }
 
 nav #menu { display: flex; flex-wrap: wrap; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid var(--col-text-light); }
 
-nav #menu li button { font-size: 18px; font-size: 1.8rem; margin-right: 1.5em; margin-bottom: 1em; }
+nav #menu li button { font-size: 18px; font-size: 1.8rem; margin-right: 1.5em; padding-bottom: 0.5em; }
 nav #menu li button:hover {
 	color: var(--col-button-hover); 
 }
@@ -106,10 +106,12 @@ nav #menu li button:hover {
 #proof p { font-family: 'ProofingFont', monospace; font-size: 18px; font-size: 1.8rem; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed var(--col-border); }
 
 .string { white-space: nowrap; overflow-x: scroll; width: 100vw; }
-.text { width: 45%; margin-right: 5%; display: inline-block; vertical-align: text-top; max-width: 60ch; }
-.layout p {
-	white-space: pre;
-}
+.text { margin-right: 2.5%; display: inline-block; vertical-align: text-top; }
+.layout p, .glyphs p { white-space: pre; }
+
+.text.width_21 { width: 60%; }
+.text.width_18, .text.width_16 { width: 45%; }
+.text.width_14, .text.width_12, .text.width_10 { width: 30%; }
 
 /**
  * ------------------------------------------------------------- 

@@ -102,7 +102,8 @@ for ( let i = 0; i < menu.length; i++ ) {
         // Remove the class 'current' if it exists
 		for (j = 0; j < menu.length; j++) {
 		    menu[j].classList.remove('current')
-		}		
+		}
+		// Add current class to active selection
 		this.classList.add('current');
 		
 		empty_proof();
@@ -147,7 +148,7 @@ function add_blocks(i, proof_text) {
 	// Text blocks
 	for ( let j = 0; j < sizes_small.length; j++ ) {
 	
-		proof_text.push('<article class="text">');
+		proof_text.push('<article class="text width_' + sizes_small[j] + '">');
 		proof_text.push('<h4>' + sizes_small[j] + 'px</h4>');
 		proof_text.push('<p contenteditable="true" style="font-size: ' + sizes_small[j] + 'px;">');
 		proof_text.push(content[i]['long']);
