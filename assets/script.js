@@ -147,6 +147,7 @@ function add_blocks(i, proof_text) {
 
 function add_layout(i, proof_text) {
 	// Layout blocks
+	console.log('hello');
 	proof_text.push('<article class="layout">');
 	proof_text.push('<h4>60px | 24px | 18px</h4>');
 	proof_text.push('<p contenteditable="true" style="font-size: 60px;">');
