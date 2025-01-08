@@ -53,7 +53,7 @@ function handlefiles(files) {
         // Append the style to the document head
 		document.head.appendChild(styleElement); 
     };
-	
+		
 	// Add filename of dropped file in the dropzone
 	console.log(fontFile);
 	var current = document.getElementById("current");
