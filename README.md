@@ -11,9 +11,21 @@ Either download the repository to use offline, or use the online version: https:
 
 ## Features
 
+- Choose script: Latin, Arabic or Greek
+- Choose type of text to view (still working on good text to show here)
+- All text blocks are content editable.
 - Works with .otf, .ttf, .woff and .woff2
-- Change font size.
-- Choose between normal Latin text, random Arabic words or "adhesion"/"videospan" text.
-- Select the text block and paste your own text.
-- Dark mode with with text on dark background.
+- Dark mode with text on dark background.
 - Should in theory work on an iOS device when you have font files in your iCloud Drive.
+
+## Consulted resources
+
+### Proofing text
+Text for Proofing Fonts. A farewell to The Quick Brown Fox, by Jonathan Hoefler, https://www.typography.com/blog/text-for-proofing-fonts
+
+### Pangrams
+List of pangrams, https://clagnut.com/blog/2380
+
+### General idea
+https://www.impallari.com/testing/index.php
+https://motaitalic.com/tools/devanagari-font-tester/

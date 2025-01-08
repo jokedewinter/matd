@@ -2,27 +2,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-	<title>Latin | Font proofing</title>
+	<title>Arabic | Font proofing</title>
 	<link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body class="latin">
+<body class="arabic">
 	<header>
-	    <h1>Font proofing</h1>
+		<h1><a href="index.html">Font proofing</a></h1>
 	
 		<nav>
 			<ul id="menu_script">
-				<li class="current">Latin</li>
-				<li><a href="arabic.html">Arabic</a></li>
+				<li><a href="index.html">Latin</a></li>
+				<li class="current">Arabic</li>
 				<li><a href="greek.html">Greek</a></li>
 				<li><button id="reverse"></button></li>			
 			</ul>
-<!--			<ul id="menu_script">
-				<li class="current"><button class="choice_script" name="latin">Latin</buttton></li>
-				<li><button class="choice_script" name="arabic">Arabic</buttton></li>
-				<li><button class="choice_script" name="greek">Greek</buttton></li>
-				<li><button id="reverse"></button></li>			
-			</ul>-->
 		</nav>
 	</header>
 
@@ -48,18 +42,12 @@
 			<li><button class="choice_text" name="kern">Kern strings</button></li>
 		</ul>
 	</nav>
-
+	
 	<section id="proof">
 		<p class="string" contenteditable="true">Hang on...</p>
 	</section>
 
-
-	<div id="textbox">
-<!--		<p class="string" contenteditable="true">Hang on...</p>-->
-	</div>
-
-	
-	<script src="assets/latin.json"></script>
+	<script src="assets/arabic.json"></script>
 	<script src="assets/script.js"></script>		
 </body>
 </html>

@@ -66,21 +66,6 @@ function handlefiles(files) {
 
 
 /* -------------------------------------------------------------
- * Change font size
- * ------------------------------------------------------------- */
-var selectSize = document.getElementsByClassName("size_select");
-	
-for ( let i = 0; i < selectSize.length; i++ ) {
-    selectSize[i].addEventListener("input", function() { 
-	        
-        var chosenSize = selectSize[i].value;
-        document.getElementsByClassName("string")[i].style.fontSize = chosenSize + "px";
-        document.getElementsByClassName("size_value")[i].innerHTML = chosenSize + " px";
-	        
-    }, false);
-}
-
-/* -------------------------------------------------------------
  * Choose theme
  * ------------------------------------------------------------- */
 
@@ -97,40 +82,105 @@ reverse.onclick = function() {
 // Read the JSON file
 var content = content;
 
-// Get the menu
-var menu = '';
-menu = document.getElementById("menu").getElementsByClassName("text_choice");
+// Global variables
+const sizes_big = [144, 96, 72, 48, 36, 24];
+const sizes_small = [21, 18, 16, 14, 12, 10];
 
 // Fill text block with adhesion on page load
-add_text(0);
-menu[0].classList.add('current');
+//add_text(0);
+//menu[0].classList.add('current');
 
-// Listen for button click of the menu
-for ( let i = 0; i < menu.length; i++ ) {
+// Get the choice of text
+var menu_text = '';
+menu_text = document.getElementById("menu_text").getElementsByClassName("choice_text");
 
-    menu[i].addEventListener("click", function() {
+for ( let i = 0; i < menu_text.length; i++ ) {
+
+    menu_text[i].addEventListener("click", function() {
         // Remove the class 'current' if it exists
-		for (j = 0; j < menu.length; j++) {
-		    menu[j].classList.remove('current')
-		}		
+		for (j = 0; j < menu_text.length; j++) {
+		    menu_text[j].classList.remove('current')
+		}
+		// Add current class to active selection
 		this.classList.add('current');
-		add_text(i);
+		
+		var proof = document.getElementById("proof");	
+		proof_text = new Array();
+		
+		if (( "adhesion" == content[i]['text'] ) || ( "pangram" == content[i]['text'] )) { add_lines(i, proof_text); }
+		if ( "layout" == content[i]['text'] ) { add_layout(i, proof_text); }
+		if ( "glyphs" == content[i]['text'] ) { add_glyphs(i, proof_text); }
+		else { add_blocks(i, proof_text); }
+		
+		proof.innerHTML = proof_text.join('');		
+		
 	}, false);
 } 
 
-function add_text(i) {
-	var paragraph = document.getElementById("textbox");	
-	paragraph_text = new Array();
+function add_lines(i, proof_text) {
+	// Text single lines
+	for ( let j = 0; j < sizes_big.length; j++ ) {
 	
-	var language = '';
-	if ( 'arabic' == content[i]['text'] ) { language = "style='direction:rtl;'"; }
-	paragraph_text.push('<p class="string" contenteditable="true" ' + language + ' >');
-	paragraph_text.push(content[i]['value']);
-	paragraph_text.push('</p>');	
-	paragraph.innerHTML = paragraph_text.join('');	
+		proof_text.push('<h4>' + sizes_big[j] + 'px</h4>');
+		proof_text.push('<p class="string" contenteditable="true" style="font-size: ' + sizes_big[j] + 'px;">');
+		proof_text.push(content[i]['short']);
+		proof_text.push('</p>');	
+	}
 	
-	// Reset type size 
-    document.getElementsByClassName("string")[0].style.fontSize = "18px";
-    document.getElementsByClassName("size_value")[0].innerHTML = "18 px";
-    document.getElementsByClassName("size_select")[0].value = "18";
+	return proof_text;
 }
+
+function add_blocks(i, proof_text) {
+	// Text blocks
+	for ( let j = 0; j < sizes_small.length; j++ ) {
+	
+		proof_text.push('<article class="text width_' + sizes_small[j] + '">');
+		proof_text.push('<h4>' + sizes_small[j] + 'px</h4>');
+		proof_text.push('<p contenteditable="true" style="font-size: ' + sizes_small[j] + 'px;">');
+		proof_text.push(content[i]['long']);
+		proof_text.push('</p>');	
+		proof_text.push('</article>');
+	}
+	
+	return proof_text;
+}
+
+function add_layout(i, proof_text) {
+	// Layout blocks
+	proof_text.push('<article class="layout">');
+	proof_text.push('<h4>60px | 24px | 18px</h4>');
+	proof_text.push('<p contenteditable="true" style="font-size: 60px;">');
+	proof_text.push(content[i]['headline']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 24px;">');
+	proof_text.push(content[i]['intro']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 18px;">');
+	proof_text.push(content[i]['paragraphs']);
+	proof_text.push('</p>');	
+	proof_text.push('</article>');
+	
+	return proof_text;
+}
+
+function add_glyphs(i, proof_text) {
+	// Layout blocks
+	proof_text.push('<article class="glyphs">');
+	proof_text.push('<h4>72px</h4>');
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['lowercase']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['uppercase']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['figures']);
+	proof_text.push('</p>');	
+	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+	proof_text.push(content[i]['punctuation']);
+	proof_text.push('</p>');	
+	proof_text.push('</article>');
+	
+	return proof_text;
+}
+

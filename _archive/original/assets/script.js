@@ -130,7 +130,7 @@ function add_text(i) {
 	paragraph.innerHTML = paragraph_text.join('');	
 	
 	// Reset type size 
-    document.getElementsByClassName("string")[0].style.fontSize = "24px";
-    document.getElementsByClassName("size_value")[0].innerHTML = "24 px";
-    document.getElementsByClassName("size_select")[0].value = "24";
+    document.getElementsByClassName("string")[0].style.fontSize = "18px";
+    document.getElementsByClassName("size_value")[0].innerHTML = "18 px";
+    document.getElementsByClassName("size_select")[0].value = "18";
 }
