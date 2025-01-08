@@ -28,7 +28,7 @@ button, fieldset, input, textarea, select, fieldset { background: none; border: 
  
 :root {
 	--font: sans-serif;
-    --col-text: rgb(66, 67, 69); 		
+    --col-text: #212121; 		
 	--col-text-reverse: #fbfbf9;
     --col-text-light: #A3A299;
 	--col-page-light: #ffffff; 

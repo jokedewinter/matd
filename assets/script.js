@@ -107,10 +107,27 @@ for ( let i = 0; i < menu_text.length; i++ ) {
 		var proof = document.getElementById("proof");	
 		proof_text = new Array();
 		
-		if (( "adhesion" == content[i]['text'] ) || ( "pangram" == content[i]['text'] )) { add_lines(i, proof_text); }
-		if ( "layout" == content[i]['text'] ) { add_layout(i, proof_text); }
-		if ( "glyphs" == content[i]['text'] ) { add_glyphs(i, proof_text); }
+		console.log(i, menu_text[i].name);
+		/*
+		if (( "adhesion" == menu_text[i].name ) || ( "pangram" == menu_text[i].name )) { add_lines(i, proof_text); }
+		if ( "layout" == menu_text[i].name ) { add_layout(i, proof_text); }
+		if ( "glyphs" == menu_text[i].name ) { add_glyphs(i, proof_text); }
 		else { add_blocks(i, proof_text); }
+		*/
+		
+		switch ( menu_text[i].name ) {
+			case "adhesion"  : add_lines(0, proof_text); add_blocks(0, proof_text); break;
+			case "pangram"   : add_lines(1, proof_text); add_blocks(1, proof_text); break;
+			case "lowercase" : add_blocks(2, proof_text); break;
+			case "uppercase" : add_blocks(3, proof_text); break;
+			case "paragraph" : add_blocks(4, proof_text); break;
+			case "layout"	 : add_layout(5, proof_text); break;
+			case "glyphs"	 : add_glyphs(6, proof_text); break;
+			case "diacritics": add_glyphs(7, proof_text); break;
+//			case "kern": add_text(i); break;
+			default :
+				console.log('You broke it!');
+		}		
 		
 		proof.innerHTML = proof_text.join('');		
 		
@@ -147,7 +164,6 @@ function add_blocks(i, proof_text) {
 
 function add_layout(i, proof_text) {
 	// Layout blocks
-	console.log('hello');
 	proof_text.push('<article class="layout">');
 	proof_text.push('<h4>60px | 24px | 18px</h4>');
 	proof_text.push('<p contenteditable="true" style="font-size: 60px;">');
@@ -170,16 +186,26 @@ function add_glyphs(i, proof_text) {
 	proof_text.push('<h4>72px</h4>');
 	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
 	proof_text.push(content[i]['lowercase']);
-	proof_text.push('</p>');	
-	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
-	proof_text.push(content[i]['uppercase']);
-	proof_text.push('</p>');	
+	proof_text.push('</p>');
+
+	if ( "" != content[i]['uppercase'] ) {
+		proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
+		proof_text.push(content[i]['uppercase']);
+		proof_text.push('</p>');	
+	}
+	
+	if ( "" != content[i]['figures'] ) {
 	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
 	proof_text.push(content[i]['figures']);
 	proof_text.push('</p>');	
+	}
+	
+	if ( "" != content[i]['punctuation'] ) {
 	proof_text.push('<p contenteditable="true" style="font-size: 72px;">');
 	proof_text.push(content[i]['punctuation']);
 	proof_text.push('</p>');	
+	}
+	
 	proof_text.push('</article>');
 	
 	return proof_text;
