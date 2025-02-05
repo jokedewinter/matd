@@ -66,6 +66,23 @@ function handlefiles(files) {
 
 
 /* -------------------------------------------------------------
+ * Change font size
+ * ------------------------------------------------------------- */
+var chooseSize = document.getElementById("choose_size");
+var selectSize = document.getElementsByClassName("size_select");
+chooseSize.classList.toggle("hide");
+
+for ( let i = 0; i < selectSize.length; i++ ) {
+    selectSize[i].addEventListener("input", function() { 
+	        
+        var chosenSize = selectSize[i].value;
+        document.getElementsByClassName("text")[i].style.fontSize = chosenSize + "px";
+        document.getElementsByClassName("size_value")[i].innerHTML = chosenSize + " px";
+	        
+    }, false);
+}
+
+/* -------------------------------------------------------------
  * Choose theme
  * ------------------------------------------------------------- */
 
@@ -107,7 +124,7 @@ for ( let i = 0; i < menu_text.length; i++ ) {
 		var proof = document.getElementById("proof");	
 		proof_text = new Array();
 		
-		console.log(i, menu_text[i].name);
+		//console.log(i, menu_text[i].name);
 		/*
 		if (( "adhesion" == menu_text[i].name ) || ( "pangram" == menu_text[i].name )) { add_lines(i, proof_text); }
 		if ( "layout" == menu_text[i].name ) { add_layout(i, proof_text); }
@@ -116,14 +133,14 @@ for ( let i = 0; i < menu_text.length; i++ ) {
 		*/
 		
 		switch ( menu_text[i].name ) {
-			case "adhesion"  : add_lines(0, proof_text); add_blocks(0, proof_text); break;
-			case "pangram"   : add_lines(1, proof_text); add_blocks(1, proof_text); break;
-			case "lowercase" : add_blocks(2, proof_text); break;
-			case "uppercase" : add_blocks(3, proof_text); break;
-			case "paragraph" : add_blocks(4, proof_text); break;
-			case "layout"	 : add_layout(5, proof_text); break;
-			case "glyphs"	 : add_glyphs(6, proof_text); break;
-			case "diacritics": add_glyphs(7, proof_text); break;
+			case "adhesion"  : chooseSize.classList.add("hide"); add_lines(0, proof_text); add_blocks(0, proof_text); break;
+			case "pangram"   : chooseSize.classList.add("hide"); add_lines(1, proof_text); add_blocks(1, proof_text); break;
+			case "lowercase" : check_size_toggle(chooseSize); add_single_block(2, proof_text); break;
+			case "uppercase" : check_size_toggle(chooseSize); add_single_block(3, proof_text); break;
+			case "paragraph" : check_size_toggle(chooseSize); add_single_block(4, proof_text); break;
+			case "layout"	 : chooseSize.classList.add("hide"); add_layout(5, proof_text); break;
+			case "glyphs"	 : chooseSize.classList.add("hide"); add_glyphs(6, proof_text); break;
+			case "diacritics": chooseSize.classList.add("hide"); add_glyphs(7, proof_text); break;
 //			case "kern": add_text(i); break;
 			default :
 				console.log('You broke it!');
@@ -133,6 +150,13 @@ for ( let i = 0; i < menu_text.length; i++ ) {
 		
 	}, false);
 } 
+
+function check_size_toggle(chooseSize) {
+	if (chooseSize.classList.contains("hide")) {
+		chooseSize.classList.remove("hide");
+	}
+}
+
 
 function add_lines(i, proof_text) {
 	// Text single lines
@@ -146,6 +170,7 @@ function add_lines(i, proof_text) {
 	
 	return proof_text;
 }
+
 
 function add_blocks(i, proof_text) {
 	// Text blocks
@@ -161,6 +186,17 @@ function add_blocks(i, proof_text) {
 	
 	return proof_text;
 }
+
+
+function add_single_block(i, proof_text) {	
+	// Text block
+	proof_text.push('<p class="text" contenteditable="true" style="font-size: 18px;">');
+	proof_text.push(content[i]['long']);
+	proof_text.push('</p>');	
+	
+	return proof_text;
+}
+
 
 function add_layout(i, proof_text) {
 	// Layout blocks
@@ -179,6 +215,7 @@ function add_layout(i, proof_text) {
 	
 	return proof_text;
 }
+
 
 function add_glyphs(i, proof_text) {
 	// Layout blocks

@@ -96,9 +96,15 @@ header ul li { margin-left: 1em; }
 #menu_text { display: flex; flex-wrap: wrap; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid var(--col-text-light); }
 
 #menu_text li button { margin-right: 1.5em; padding-bottom: 0.5em; }
-#menu_text li button:hover {
-	color: var(--col-button-hover); 
+#menu_text li button:hover { color: var(--col-button-hover); }
+
+#choose_size.hide {
+	display: none;
 }
+
+/*#choose_size.show {
+	display: block;
+}*/
 
 /**
  * ---------------------------------
@@ -155,4 +161,25 @@ fieldset { margin: 0 auto; }
 
 #fileElem { display: none; }
 #current { display: inline-block; float: right; color: peru; font-weight: bold; }
+
+/**
+ * ---------------------------------
+ * Input range styles
+ * SOURCE: from http://danielstern.ca/range.css/#/
+ * ------------------------------------------------ */
+ 
+input[type=range] { width: 50%; margin: 4.5px 0; padding: 0 1em; background-color: transparent; vertical-align: middle; -webkit-appearance: none; }
+input[type=range]:focus { outline: none; }
+input[type=range]::-webkit-slider-runnable-track { background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; width: 100%; height: 1px; cursor: pointer; }
+input[type=range]::-moz-range-track { background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; width: 100%; height: 1px; cursor: pointer; }
+input[type=range]::-ms-track { background: transparent; border-color: transparent; border-width: 4.5px 0; color: transparent; width: 100%; height: 1px; cursor: pointer; }
+input[type=range]::-webkit-slider-thumb { margin-top: -3.5px; width: 10px; height: 10px; background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; border-radius: 50px; cursor: pointer; -webkit-appearance: none; }
+input[type=range]::-moz-range-thumb { width: 10px; height: 10px; background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; border-radius: 50px; cursor: pointer; }
+input[type=range]::-ms-thumb { width: 10px; height: 10px; background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; border-radius: 50px; cursor: pointer; margin-top: 0px; }
+input[type=range]::-ms-fill-lower { background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; }
+input[type=range]:focus::-ms-fill-lower { background: var(--col-text-light); }
+input[type=range]::-ms-fill-upper { background: var(--col-text-light); border: 0px solid var(--col-text-light); border: 0; }
+input[type=range]:focus::-ms-fill-upper { background: var(--col-text-light); }
+@supports (-ms-ime-align:auto) { input[type=range] { margin: 0; } }
+
 
